@@ -47,11 +47,11 @@
           <div class="w-5 h-0 border-b-2 -rotate-45"></div>
         </div>
 
-        <a>Home</a>
-        <a>About Me </a>
-        <a>Portfolio </a>
-        <a>Blog </a>
-        <a>Contact </a>
+        <a class="md: border-b-4 border-color1 pb-1 px-1">Home</a>
+        <a class="md: border-b-0 border-color1 pb-1 px-1">About Me </a>
+        <a class="md: border-b-0 border-color1 pb-1 px-1">Portfolio </a>
+        <a class="md: border-b-0 border-color1 pb-1 px-1">Blog </a>
+        <a class="md: border-b-0 border-color1 pb-1 px-1">Contact </a>
       </nav>
     </header>
     <NuxtLayout>
@@ -68,4 +68,20 @@ function displayNav() {
 function hideNav() {
   state.loadNav = false
 }
+
+function handleScroll(e) {
+  let header = window.document.querySelector('nav')
+  if (window.scrollY > 100) {
+    console.log(window.scrollY)
+    header.classList.add('md:w-screen')
+  } else {
+    header.classList.remove('md:w-screen')
+  }
+}
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+}),
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 </script>
